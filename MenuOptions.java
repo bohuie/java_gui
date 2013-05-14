@@ -1,8 +1,13 @@
+import java.awt.BorderLayout;
 import java.awt.event.*;
 import javax.swing.*; 
+import javax.swing.BorderFactory; 
+import javax.swing.border.EtchedBorder; 
 
 public class MenuOptions extends JFrame 
 {
+  private JLabel statustext; 
+
   public MenuOptions()
   {
     JMenuBar menubar = new JMenuBar();
@@ -57,11 +62,37 @@ public class MenuOptions extends JFrame
     file.add( fileSave );
     file.add( fileExit );
 
+    // initialize status bar 
+    statustext = new JLabel( "Display Progress Text in Application" ); 
+    statustext.setBorder( BorderFactory.createEtchedBorder( EtchedBorder.RAISED ));
+
+    // set up Progress menu 
+    JMenu progress = new JMenu( "Progress" );
+    progress.setMnemonic( KeyEvent.VK_P );
+
+    JCheckBoxMenuItem pbar = new JCheckBoxMenuItem( "Show Progress" );
+    pbar.setState( true ); 
+    pbar.addActionListener( new ActionListener()
+    {
+      // when clicked, set status to the opposite value to what it currently is
+      public void actionPerformed( ActionEvent event )
+      {
+        if( statustext.isVisible() )
+          statustext.setVisible( false );
+        else 
+          statustext.setVisible( true );
+       
+      }
+    });
+    progress.add( pbar );
+
     // add File menu
     menubar.add( file );
+    menubar.add( progress );
 
     // set frame attributes
     setJMenuBar( menubar );
+    add( statustext, BorderLayout.SOUTH );
     setTitle( "Basic menu" );
     setSize( 300, 200 );
     setLocationRelativeTo( null );
