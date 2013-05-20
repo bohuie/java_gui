@@ -1,7 +1,31 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Skeleton2D extends JPanel
+public class Skeleton2D extends JFrame
+{
+  public Skeleton2D()
+  {
+    // setup basic panel 
+    DrawPanel pane = new DrawPanel();
+
+    // add components 
+    add( pane ); 
+
+    // set frame attributes
+    setTitle( "Example" );
+    setSize( 300, 200 );
+    setLocationRelativeTo( null );
+    setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+  }
+
+  public static void main( String[] args )
+  {
+    Skeleton2D ex = new Skeleton2D();
+    ex.setVisible( true );
+  }
+}
+
+class DrawPanel extends JPanel
 {
   // all the drawing is done in this method
   public void paint( Graphics g )
@@ -11,17 +35,5 @@ public class Skeleton2D extends JPanel
     // do drawings 
     g2d.drawString( "Java 2D", 50, 50 );
   }
-
-  public static void main( String[] args )
-  {
-    JFrame     frame = new JFrame( "Java 2D Skeleton" );
-    Skeleton2D ex    = new Skeleton2D();
-    frame.add( ex ); 
-
-    // set frame attributes
-    frame.setSize( 300, 200 );
-    frame.setLocationRelativeTo( null );
-    frame.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-    frame.setVisible( true );
-  }
 }
+
