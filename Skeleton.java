@@ -5,6 +5,11 @@ public class Skeleton extends JFrame
 {
   public Skeleton()
   {
+    // initialize privates 
+
+    // setup basic panel 
+
+    // add components 
 
     // set frame attributes
     setTitle( "Example" );
