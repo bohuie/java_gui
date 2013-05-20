@@ -36,6 +36,10 @@ class DrawPanel extends JPanel
     // paint using the Graphics2D object
     Graphics2D g2d = ( Graphics2D )g;
 
+    // draw text 
+    g2d.setColor( Color.BLACK ); 
+    g2d.drawString( "Series of Nice Rectanges", 100, 12 );
+
     // draw several rectanges
     g2d.setColor( new Color( 212, 212, 212 ));
     g2d.drawRect(  10,  15,  90,  60 );
