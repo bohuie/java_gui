@@ -98,6 +98,8 @@ public class PicturePuzzle extends JFrame implements ActionListener
     if( labelX == buttonX && ( labelY - buttonY ) == size.height ) 
     {
       int labelIndex = buttonIndex + maxCols;
+      System.out.println( "bdex = " + buttonIndex );
+      System.out.println( "ldex = " + labelIndex );
       centerPanel.remove( buttonIndex );
       centerPanel.add( label,  buttonIndex );
       centerPanel.add( button, labelIndex );
@@ -111,6 +113,8 @@ public class PicturePuzzle extends JFrame implements ActionListener
     if( labelX == buttonX && ( labelY - buttonY ) == -size.height ) 
     {
       int labelIndex = buttonIndex - maxCols;
+      System.out.println( "bdex = " + buttonIndex );
+      System.out.println( "ldex = " + labelIndex );
       centerPanel.remove( labelIndex );
       centerPanel.add( button, labelIndex );
       centerPanel.add( label,  buttonIndex );
@@ -124,6 +128,8 @@ public class PicturePuzzle extends JFrame implements ActionListener
     if( labelY == buttonY && ( labelX - buttonX ) == size.width ) 
     {
       int labelIndex = buttonIndex + 1;
+      System.out.println( "bdex = " + buttonIndex );
+      System.out.println( "ldex = " + labelIndex );
       centerPanel.remove( buttonIndex );
       centerPanel.add( label,  buttonIndex );
       centerPanel.add( button, labelIndex );
