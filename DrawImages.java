@@ -1,6 +1,6 @@
 import java.awt.*;
-import java.util.Random;
 import javax.swing.*;
+import java.awt.geom.AffineTransform;
 
 public class DrawImages extends JFrame
 {
@@ -17,7 +17,7 @@ public class DrawImages extends JFrame
 
     // set frame attributes
     setTitle( "Example" );
-    setSize( 300, 300 );
+    setSize( 600, 400 );
     setLocationRelativeTo( null );
     setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
   }
@@ -49,6 +49,22 @@ class DrawPanel extends JPanel
     Graphics2D g2d = ( Graphics2D )g;
   
     // draw the image 
+    g2d.drawImage( pix, 0, 0, null ); 
+
+    // draw image again with translation
+    g2d.translate( 150, 50 );
+    g2d.drawImage( pix, 0, 0, null ); 
+
+    // draw image again with translation + rotation
+    g2d.translate( 150, 50 );
+    g2d.rotate( Math.PI/4 );
+    g2d.drawImage( pix, 0, 0, null ); 
+
+    // draw image again with translation + scaling
+    AffineTransform tx1 = new AffineTransform(); 
+    tx1.scale( 2.0, 2.0 ); 
+    g2d.setTransform( tx1 ); 
+    g2d.translate( 200, 100 );
     g2d.drawImage( pix, 0, 0, null ); 
   }
 }
