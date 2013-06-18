@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+// draws image that slowly fades out 
+// restructed version of FadeOut.java
 public class DrawFading extends JFrame
 {
   public DrawFading()
@@ -16,7 +18,7 @@ public class DrawFading extends JFrame
     setTitle( "Example" );
     setSize( 850, 780 );
     setLocationRelativeTo( null );
-    setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
   }
 
   public static void main( String[] args )

@@ -4,10 +4,13 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.util.Random;
 
+// repeatedly asks the user to select the colour displayed in the word, given a
+// colour word
+// - NOT WORKING YET
 public class ColorTest extends JFrame 
 {
-  private static String[] cwords = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"};
-  private Color[] colours = {Color.RED, Color.ORANGE, Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA};
+  private static String[] cwords = {"Red", "Black", "Yellow", "Green", "Blue", "Purple"};
+  private Color[] colours = {Color.RED, Color.BLACK, Color.YELLOW, Color.GREEN, Color.BLUE, Color.MAGENTA};
   private int     numQuestions;
   private JLabel  instruction;
   private JLabel  question;

@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import javax.swing.*;
 
+// draws rectangles and circles
 public class DrawShapes extends JFrame
 {
   public DrawShapes()
@@ -16,7 +17,7 @@ public class DrawShapes extends JFrame
     setTitle( "Example" );
     setSize( 350, 250 );
     setLocationRelativeTo( null );
-    setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
   }
 
   public static void main( String[] args )

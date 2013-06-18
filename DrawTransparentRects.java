@@ -1,6 +1,8 @@
 import java.awt.*;
 import javax.swing.*;
 
+// draws a series of rectangles on a panel varying in transparency
+// transparency is done via alpha composition - combine image with a background
 public class DrawTransparentRects extends JFrame
 {
   public DrawTransparentRects()
@@ -15,7 +17,7 @@ public class DrawTransparentRects extends JFrame
     setTitle( "Example" );
     setSize( 590, 120 );
     setLocationRelativeTo( null );
-    setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
   }
 
   public static void main( String[] args )

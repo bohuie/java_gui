@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+// draws the "loading" or "processing" sign that gets displayed when user is waiting
 public class Waiting extends JFrame
 {
   public Waiting()
