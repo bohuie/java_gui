@@ -2,9 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class TestSwingCommonFeatures extends JFrame
+class SwingCommonFeatures extends JFrame
 {
-  public TestSwingCommonFeatures()
+  public SwingCommonFeatures()
   {
     // setup top panel 
     JPanel p1 = new JPanel( new FlowLayout( FlowLayout.LEFT, 2, 2 ));
@@ -42,11 +42,14 @@ public class TestSwingCommonFeatures extends JFrame
     add( p1 );
     add( p2 );
   }
+}
   
+public class TestSwingCommonFeatures 
+{
   public static void main( String[] args )
   {
-    JFrame frame = new TestSwingCommonFeatures();
-    frame.setTitle( "TestSwingCommonFeatures" );
+    JFrame frame = new SwingCommonFeatures();
+    frame.setTitle( "SwingCommonFeatures" );
     frame.setSize( 300, 150 ); 
     frame.setLocationRelativeTo( null ); // centers frame
     frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );

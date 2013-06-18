@@ -37,7 +37,7 @@ public class DrawLines2D extends JFrame
         }
         
         // right button click 
-        if( e.getButton() == MouseEvent.BUTTON3 )
+        if( e.getButton() == MouseEvent.BUTTON1 )  // BUTTON3 for right button click
         {
           pane.setCoords( coords );
           pane.setCount( count );
@@ -52,7 +52,7 @@ public class DrawLines2D extends JFrame
     setTitle( "Example" );
     setSize( 300, 200 );
     setLocationRelativeTo( null );
-    setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+    setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
   }
 
   public static void main( String[] args )
