@@ -7,6 +7,7 @@ import java.util.Random;
 // repeatedly asks the user to select the colour displayed in the word, given a
 // colour word
 // - NOT WORKING YET
+// maybe instead of labels, try to use graphics drawString
 public class ColorTest extends JFrame 
 {
   private static String[] cwords = {"Red", "Black", "Yellow", "Green", "Blue", "Purple"};
