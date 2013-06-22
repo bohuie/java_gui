@@ -11,7 +11,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
 {
   private Timer        timer;
   private FeedMeSprite monster;
-  private ArrayList    food; 
+  private FeedMeDrop   dropper;
 
   public FeedMeBoard() 
   {
@@ -23,8 +23,8 @@ public class FeedMeBoard extends JPanel implements ActionListener
     addKeyListener( myListener ); 
 
     // initialize the game pieces  
+    dropper = new FeedMeDrop( 3 );
     monster = new FeedMeSprite();
-    food    = new ArrayList();
     timer   = new Timer( 5, this );    // 5ms delay, "this" as the listener object
     timer.start(); 
   }
@@ -39,6 +39,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
     g2d.drawImage( monster.getImage(), monster.getX(), monster.getY(), this );
 
     // draw each food item 
+    ArrayList food = dropper.getTargets();
     for( int i=0; i<food.size(); i++ )
     {
       FeedMeApple a = ( FeedMeApple )food.get( i );
@@ -46,24 +47,12 @@ public class FeedMeBoard extends JPanel implements ActionListener
     }
   }
 
-  private void drop()
-  {
-    // position the item somewhere at the top of the board  
-    Random r = new Random();
-    if( r.nextFloat() > 0.95 )
-    {
-      int xpos = Math.abs( r.nextInt() ) % 1000;
-      FeedMeApple a = new FeedMeApple( xpos, -100 ); 
-      food.add( a );
-    }
-  } 
-
   // animate sprite according to the timer event 
   public void actionPerformed( ActionEvent e ) 
   {
     monster.move();
-    drop(); 
     // remove item from arraylist if not visible, else let it fall
+    ArrayList food = dropper.getTargets();
     for( int i=0; i<food.size(); i++ )
     {
       FeedMeApple a = ( FeedMeApple )food.get( i );
