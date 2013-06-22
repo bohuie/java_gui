@@ -1,9 +1,11 @@
 import java.awt.Color; 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.Timer; 
+import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.Random; 
 
@@ -12,6 +14,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
   private Timer        timer;
   private FeedMeSprite monster;
   private FeedMeDrop   dropper;
+  private Image        bkgrd; 
 
   public FeedMeBoard() 
   {
@@ -21,6 +24,10 @@ public class FeedMeBoard extends JPanel implements ActionListener
     // apply my own event handler  
     TAdapter myListener = new TAdapter();
     addKeyListener( myListener ); 
+
+    // setup background 
+    ImageIcon ii    = new ImageIcon( getClass().getResource( "sky.png" ) );
+    bkgrd           = ii.getImage();
 
     // initialize the game pieces  
     dropper = new FeedMeDrop( 3 );
@@ -36,6 +43,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
     Graphics2D g2d = ( Graphics2D )g;
 
     // do drawings 
+    g2d.drawImage( bkgrd, 0, 0, null ); 
     g2d.drawImage( monster.getImage(), monster.getX(), monster.getY(), this );
 
     // draw each food item 
