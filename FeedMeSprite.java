@@ -20,7 +20,7 @@ public class FeedMeSprite
   public FeedMeSprite() 
   {
     // create the sprite image
-    eater        = "ghost.png";
+    eater        = "dogopen.png";
     ImageIcon ii = new ImageIcon( getClass().getResource( eater ) );
     myImage      = ii.getImage();
     width        = myImage.getWidth( null );
