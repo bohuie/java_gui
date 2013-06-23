@@ -5,8 +5,8 @@ import javax.swing.ImageIcon;
 
 public class FeedMeSprite
 {
-  private String  eater;                  // sprite file name 
   private Image   myImage;                // sprite image 
+  private Image   fullImage;              // sprite image when catches item
   private int     x;                      // x coordinate on the board
   private int     y;                      // y coordinate on the board
   private int     dx;                     // change in x when moved 
@@ -15,17 +15,19 @@ public class FeedMeSprite
   private boolean visible;
   private int     width;
   private int     height;
+  private boolean happy;                  // happy when full
 
   // constructor 
   public FeedMeSprite() 
   {
     // create the sprite image
-    eater        = "dogopen.png";
-    ImageIcon ii = new ImageIcon( getClass().getResource( eater ) );
+    ImageIcon ii = new ImageIcon( getClass().getResource( "dogopen.png" ) );
     myImage      = ii.getImage();
     width        = myImage.getWidth( null );
     height       = myImage.getHeight( null );
     visible      = true;
+    ii           = new ImageIcon( getClass().getResource( "doghappy.png" ) );
+    fullImage    = ii.getImage();
 
     // start off the sprite at the bottom middle of the board
     x  = 460;
@@ -37,6 +39,9 @@ public class FeedMeSprite
 
     // changes in pixel animation 
     incr = 5;
+
+    // initially, empty stomach 
+    happy = false; 
   }
 
   // this method will be called by the Board's event listener
@@ -44,14 +49,26 @@ public class FeedMeSprite
   {
     x += dx;
     y += dy;
+
+    // try to catch more food when moving
+    if( dx != 0 || dy != 0 )
+      happy = false; 
   }
 
-  public int     getX()      { return x; } 
-  public int     getY()      { return y; } 
-  public Image   getImage()  { return myImage; }
-  public boolean isVisible() { return visible; }
+  public int     getX()          { return x; } 
+  public int     getY()          { return y; } 
+  public Image   getImage()      { return myImage; }
+  public boolean isVisible()     { return visible; }
+  public Image   getHappyImage() { return fullImage; }
+  public boolean getHappy()      { return happy; }
 
-  // if collision happens, the apple disappears
+  // if eats item, sprite becomes happy 
+  public void setHappy( boolean state ) 
+  { 
+    happy = state; 
+  }
+
+  // if collision happens, the food item disappears
   public void setVisible( boolean val ) 
   {
     visible = val; 

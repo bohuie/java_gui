@@ -13,6 +13,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
   private FeedMeDrop   dropper;
   private Image        bkgrd; 
   private int          score; 
+  private boolean      happy; 
 
   public FeedMeBoard() 
   {
@@ -28,6 +29,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
     bkgrd           = ii.getImage();
 
     // initialize the game pieces  
+    happy   = false;
     score   = 0; 
     dropper = new FeedMeDrop( 3 );
     monster = new FeedMeSprite();
@@ -43,7 +45,10 @@ public class FeedMeBoard extends JPanel implements ActionListener
 
     // do drawings 
     g2d.drawImage( bkgrd, 0, 0, null ); 
-    g2d.drawImage( monster.getImage(), monster.getX(), monster.getY(), this );
+    if( monster.getHappy() )
+      g2d.drawImage( monster.getHappyImage(), monster.getX(), monster.getY(), this );
+    else
+      g2d.drawImage( monster.getImage(), monster.getX(), monster.getY(), this );
 
     // draw each food item 
     ArrayList food = dropper.getTargets();
@@ -84,6 +89,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
       {
         a.setVisible( false );
         SoundEffect.EAT.play();
+        monster.setHappy( true );
         score++; 
       }
     }
