@@ -49,7 +49,6 @@ public class FeedMeDrop
       if( count > MAX )
       {
         timer.cancel();
-        System.out.println( "Time's up!" );
       }
     }
   }

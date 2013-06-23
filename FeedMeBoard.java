@@ -74,7 +74,15 @@ public class FeedMeBoard extends JPanel implements ActionListener
         food.remove( i ); 
     }
     checkCollision();
+    checkGameOver();
     repaint();  
+  }
+
+  private void checkGameOver()  
+  {
+    ArrayList food = dropper.getTargets();
+    if( food.size() == 0 )
+      System.out.println( "Game Over\nYour Score: " + score );
   }
 
   private void checkCollision() 
@@ -95,7 +103,6 @@ public class FeedMeBoard extends JPanel implements ActionListener
     }
   }
   
-
   // my own listener to handle events  
   // the sprite will animate according to the event given
   private class TAdapter extends KeyAdapter 
