@@ -12,7 +12,7 @@ public class FeedMeDrop
   private ArrayList targets;
   private int[]     locs;
 
-  private final static int MAX    = 100;
+  private final static int MAX    = 15;
   private final static int NUMPOS = 6;
   private final static int OFFSET = 90; 
   private final static int INCR   = 150;

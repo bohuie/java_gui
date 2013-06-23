@@ -1,7 +1,4 @@
-import java.awt.Color; 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.*; 
 import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.Timer; 
@@ -15,6 +12,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
   private FeedMeSprite monster;
   private FeedMeDrop   dropper;
   private Image        bkgrd; 
+  private int          score; 
 
   public FeedMeBoard() 
   {
@@ -30,6 +28,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
     bkgrd           = ii.getImage();
 
     // initialize the game pieces  
+    score   = 0; 
     dropper = new FeedMeDrop( 3 );
     monster = new FeedMeSprite();
     timer   = new Timer( 5, this );    // 5ms delay, "this" as the listener object
@@ -69,8 +68,26 @@ public class FeedMeBoard extends JPanel implements ActionListener
       else 
         food.remove( i ); 
     }
+    checkCollision();
     repaint();  
   }
+
+  private void checkCollision() 
+  {
+    Rectangle r1   = monster.getBounds();
+    ArrayList food = dropper.getTargets();
+    for( int i=0; i<food.size(); i++ )
+    {
+      FeedMeApple a  = ( FeedMeApple )food.get( i );
+      Rectangle   r2 = a.getBounds(); 
+      if( r1.intersects( r2 ) )
+      {
+        a.setVisible( false );
+        score++; 
+      }
+    }
+  }
+  
 
   // my own listener to handle events  
   // the sprite will animate according to the event given
