@@ -17,11 +17,10 @@ import javax.sound.sampled.*;
 
 public enum SoundEffect 
 {
-  SHOOT( "alien-noise-01.wav" ),
-  BEEP( "beep-02.wav" ),
-  BLEEP( "beep-07.wav" ),
+  EAT( "laser-01.wav" ),
+  OHNO( "alien-noise-01.wav" ),
   CHEER( "cheer-01.wav" ),
-  KILL( "laser-01.wav" );
+  SONG( "Move Forward86.wav" );
 
   // nested class for specifying volume
   public static enum Volume
@@ -74,6 +73,17 @@ public enum SoundEffect
         soundclip.stop();
       soundclip.setFramePosition( 0 );    // rewind to beginning
       soundclip.start();
+    }
+  }
+
+  public void playloop() 
+  {
+    if( vol != Volume.MUTE )
+    {
+      if( soundclip.isRunning() )
+        soundclip.stop();
+      soundclip.setFramePosition( 0 );    // rewind to beginning
+      soundclip.loop( Clip.LOOP_CONTINUOUSLY );
     }
   }
 

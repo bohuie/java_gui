@@ -83,7 +83,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
       if( r1.intersects( r2 ) )
       {
         a.setVisible( false );
-        SoundEffect.BEEP.play();
+        SoundEffect.EAT.play();
         score++; 
       }
     }
