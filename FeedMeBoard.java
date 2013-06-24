@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.JPanel;
 import javax.swing.Timer; 
 import javax.swing.ImageIcon;
+import javax.swing.JButton; 
 import java.util.ArrayList;
 import java.util.Random; 
 
@@ -14,9 +15,12 @@ public class FeedMeBoard extends JPanel implements ActionListener
   private Image        bkgrd; 
   private int          score; 
   private boolean      happy; 
+  private boolean      gameOver;
+  private JButton      closeButton;
 
   public FeedMeBoard() 
   {
+    setLayout( null ); 
     setFocusable( true );
     setDoubleBuffered( true );
 
@@ -25,15 +29,16 @@ public class FeedMeBoard extends JPanel implements ActionListener
     addKeyListener( myListener ); 
 
     // setup background 
-    ImageIcon ii    = new ImageIcon( getClass().getResource( "sky.png" ) );
-    bkgrd           = ii.getImage();
+    ImageIcon ii = new ImageIcon( getClass().getResource( "sky.png" ) );
+    bkgrd        = ii.getImage();
 
     // initialize the game pieces  
-    happy   = false;
-    score   = 0; 
-    dropper = new FeedMeDrop( 3 );
-    monster = new FeedMeSprite();
-    timer   = new Timer( 5, this );    // 5ms delay, "this" as the listener object
+    gameOver = false;
+    happy    = false;
+    score    = 0; 
+    dropper  = new FeedMeDrop( 3 );
+    monster  = new FeedMeSprite();
+    timer    = new Timer( 5, this );    // 5ms delay, "this" as the listener object
     timer.start(); 
   }
 
@@ -56,6 +61,16 @@ public class FeedMeBoard extends JPanel implements ActionListener
     {
       FeedMeApple a = ( FeedMeApple )food.get( i );
       g2d.drawImage( a.getImage(), a.getX(), a.getY(), this );
+    }
+
+    // change to ending scene if game is over
+    if( gameOver )
+    {
+      g2d.setColor( Color.WHITE ); 
+      g2d.setFont( new Font( "Comic Sans MS", Font.BOLD, 48 ));
+      g2d.drawString( "Game Over", 370, 350 );
+      g2d.drawString( "Your Score: " + score + " / " + dropper.getMax(), 280, 400 );
+      SoundEffect.SONG.stoploop();
     }
   }
 
@@ -82,7 +97,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
   {
     ArrayList food = dropper.getTargets();
     if( food.size() == 0 )
-      System.out.println( "Game Over\nYour Score: " + score );
+      gameOver = true;
   }
 
   private void checkCollision() 

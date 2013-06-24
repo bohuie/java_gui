@@ -10,7 +10,7 @@ public class FeedMeGame extends JFrame
     // pre-load all sound files
     SoundEffect.init();
     SoundEffect.vol = SoundEffect.Volume.LOW;  // un-mute
-      SoundEffect.SONG.playloop();
+    SoundEffect.SONG.playloop();
 
     // add components 
     add( myBoard ); 

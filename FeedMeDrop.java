@@ -29,6 +29,7 @@ public class FeedMeDrop
   }
 
   public ArrayList getTargets() { return targets; }
+  public int       getMax()     { return MAX; }
 
   private void drop()
   {
@@ -46,7 +47,7 @@ public class FeedMeDrop
       drop();
       count++; 
       // terminate the timer thread
-      if( count > MAX )
+      if( count >= MAX )
       {
         timer.cancel();
       }

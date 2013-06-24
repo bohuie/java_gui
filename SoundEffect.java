@@ -76,6 +76,11 @@ public enum SoundEffect
     }
   }
 
+  public void stoploop() 
+  {
+    soundclip.stop();
+  }
+
   public void playloop() 
   {
     if( vol != Volume.MUTE )

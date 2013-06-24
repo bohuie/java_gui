@@ -8,7 +8,7 @@ public class FeedMeApple
   private boolean visible;
   private int     width, height;
 
-  private final int BOARD_HEIGHT = 1100;
+  private final int BOARD_HEIGHT = 800;
   private final int FALL_SPEED   = 2;
 
   // constructor
