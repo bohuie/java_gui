@@ -25,7 +25,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
     setDoubleBuffered( true );
 
     // apply my own event handler  
-    TAdapter myListener = new TAdapter();
+    MyKeyAdapter myListener = new MyKeyAdapter();
     addKeyListener( myListener ); 
 
     // setup background 
@@ -70,6 +70,13 @@ public class FeedMeBoard extends JPanel implements ActionListener
       g2d.setFont( new Font( "Comic Sans MS", Font.BOLD, 48 ));
       g2d.drawString( "Game Over", 370, 350 );
       g2d.drawString( "Your Score: " + score + " / " + dropper.getMax(), 280, 400 );
+
+      g2d.setColor( Color.GRAY ); 
+      g2d.setFont( new Font( "Comic Sans MS", Font.BOLD, 24 ));
+      g2d.drawString( "Game made by Bowen Hui", 20, 20 ); 
+      g2d.drawString( "Music from Kevin MacLeod", 20, 50 ); 
+      g2d.drawString( "Sound effects from MediaCollege.com", 20, 80 ); 
+
       SoundEffect.SONG.stoploop();
     }
   }
@@ -120,7 +127,7 @@ public class FeedMeBoard extends JPanel implements ActionListener
   
   // my own listener to handle events  
   // the sprite will animate according to the event given
-  private class TAdapter extends KeyAdapter 
+  private class MyKeyAdapter extends KeyAdapter 
   {
     public void keyReleased( KeyEvent e ) 
     {
