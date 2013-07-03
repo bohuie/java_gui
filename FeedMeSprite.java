@@ -5,22 +5,21 @@ import javax.swing.ImageIcon;
 
 public class FeedMeSprite
 {
-  private Image   myImage;                // sprite image 
-  private Image   fullImage;              // sprite image when catches item
-  private int     x;                      // x coordinate on the board
-  private int     y;                      // y coordinate on the board
-  private int     dx;                     // change in x when moved 
-  private int     dy;                     // change in y when moved 
-  private int     incr;                   // animation pixel increment
-  private boolean visible;
-  private int     width;
-  private int     height;
-  private boolean happy;                  // happy when full
+  private Image   myImage;             // sprite image (monster dog)
+  private Image   fullImage;           // sprite image when catches item
+  private int     x;                   // x coordinate on the board
+  private int     y;                   // y coordinate on the board
+  private int     dx;                  // change in x when moved 
+  private int     dy;                  // change in y when moved 
+  private int     incr;                // animation pixel increment
+  private boolean visible;             // my visibility 
+  private int     width, height;       // my bounding box dimensions
+  private boolean happy;               // happy when full
 
   // constructor 
   public FeedMeSprite() 
   {
-    // create the sprite image
+    // initialize private variables
     ImageIcon ii = new ImageIcon( getClass().getResource( "dogopen.png" ) );
     myImage      = ii.getImage();
     width        = myImage.getWidth( null );
@@ -55,6 +54,7 @@ public class FeedMeSprite
       happy = false; 
   }
 
+  // accessors
   public int     getX()          { return x; } 
   public int     getY()          { return y; } 
   public Image   getImage()      { return myImage; }
@@ -62,23 +62,25 @@ public class FeedMeSprite
   public Image   getHappyImage() { return fullImage; }
   public boolean getHappy()      { return happy; }
 
+  // returns the bounding box of the item  
+  public Rectangle getBounds()
+  {
+    Rectangle box = new Rectangle( x, y, width, height );
+    return box;
+  }
+
+  // mutator
   // if eats item, sprite becomes happy 
   public void setHappy( boolean state ) 
   { 
     happy = state; 
   }
 
+  // mutator
   // if collision happens, the food item disappears
   public void setVisible( boolean val ) 
   {
     visible = val; 
-  }
-
-  // returns the bounding box of the item  
-  public Rectangle getBounds()
-  {
-    Rectangle box = new Rectangle( x, y, width, height );
-    return box;
   }
 
   // when keys are pressed, set the change in pixels 

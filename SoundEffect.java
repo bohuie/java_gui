@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.URL;
 import javax.sound.sampled.*;
    
-// http://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
+// Adapted from http://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
 
 /**
  * This enum encapsulates all the sound effects of a game, so as to separate
@@ -76,11 +76,13 @@ public enum SoundEffect
     }
   }
 
+  // stops the clip
   public void stoploop() 
   {
     soundclip.stop();
   }
 
+  // plays the clip indefinitely
   public void playloop() 
   {
     if( vol != Volume.MUTE )
@@ -95,6 +97,6 @@ public enum SoundEffect
   // optional static method to pre-load all the sound files
   static void init()
   {
-    values();  // calls the constructor for all the elements
+    values();  // this method calls the constructor for all the elements
   }
 }

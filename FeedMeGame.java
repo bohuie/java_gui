@@ -1,3 +1,5 @@
+// adapted from zetcode.com
+
 import javax.swing.JFrame;
 
 public class FeedMeGame extends JFrame
@@ -25,6 +27,7 @@ public class FeedMeGame extends JFrame
 
   public static void main( String[] args )
   {
+    // create the game instance
     FeedMeGame ex = new FeedMeGame();
     ex.setVisible( true );
   }
