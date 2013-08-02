@@ -39,6 +39,8 @@ public class FeedMeBoard extends JPanel implements ActionListener
     dropper  = new FeedMeDrop( 3 );    // itms fall at 3 seconds apart
     monster  = new FeedMeSprite();     // create monster eater
     timer    = new Timer( 5, this );   // 5ms delay, "this" as the listener object
+    timer.setInitialDelay( 5 );        // 5ms initial delay before timer starts 
+    timer.setDelay( 3 );               // 3ms delay between checks 
     timer.start(); 
   }
 
